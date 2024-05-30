@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${lato.variable} max-w-[1440px]  container mx-auto md:p-5`}
+        className={`${inter.variable} ${lato.variable} container mx-auto p-5`}
       >
         {children}
       </body>

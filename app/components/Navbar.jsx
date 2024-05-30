@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container z-50 mx-auto">
         <div className="flex items-center justify-between mt-4 max-sm:px-4">
           <div className="">
             <Link href="/">

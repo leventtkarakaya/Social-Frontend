@@ -7,7 +7,7 @@ import Logo from "@/public/Logo.png";
 export default function Publish() {
   return (
     <>
-      <div className="flex mt-20 md:w-2/3">
+      <div className="flex mt-8">
         <div className="w-full shadow-xl card card-side bg-base-200">
           <div className="card-body">
             <div className="flex items-center gap-5 pb-1">
