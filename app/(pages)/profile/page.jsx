@@ -1,6 +1,10 @@
+"use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import React from "react";
 import bg from "@/public/bg-cover.png";
+import Logo from "@/public/Logo.png";
+import Resim from "@/public/Resim.jpg";
 export default function page() {
   return (
     <>
@@ -28,7 +32,7 @@ export default function page() {
                   />
                   <div className="flex flex-col space-y-2 text-white">
                     <span>Levent</span>
-                    <span>Karakaya</span>
+                    <span className="uppercase">Karakaya</span>
                   </div>
                 </div>
                 <div className="mr-10">
@@ -40,7 +44,213 @@ export default function page() {
             </div>
           </div>
         </div>
+        <div>
+          {/* PopularUserCard component */}
+          {<PopularUserCard />}
+        </div>
       </div>
     </>
   );
 }
+
+const PopularUserCard = () => {
+  const [actives, setActives] = useState(0);
+  const [value, setValue] = useState({
+    id: 0,
+    name: "İçerikler",
+    value: "content",
+  });
+  const setActiveArray = [
+    {
+      id: 0,
+      name: "İçerikler",
+      value: "content",
+    },
+    {
+      id: 1,
+      name: "Takip",
+      value: "followers",
+    },
+    {
+      id: 2,
+      name: "Takipçiler",
+      value: "following",
+    },
+  ];
+
+  const handleOnclik = (item) => {
+    setActives(item?.id);
+    setValue(item);
+  };
+
+  useEffect(() => {
+    handleOnclik(setActiveArray[0]);
+  }, []);
+
+  return (
+    <>
+      <div className="w-1/2 h-10 max-sm:w-full">
+        <div className="w-full h-10 ">
+          <div className="flex items-center justify-between w-full">
+            {setActiveArray.map((item) => {
+              return (
+                <button
+                  key={item.id}
+                  className={
+                    value?.value === item.value
+                      ? "w-full h-10 bg-blue-400"
+                      : "w-full h-10 bg-transparent"
+                  }
+                  onClick={() => handleOnclik(item)}
+                >
+                  <span className="btm-nav-label">{item.name}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        {/* ContentCard & FollowersCard & FollowingCard components */}
+        {value?.value === "content" && <ContentCard />}
+        {value?.value === "followers" && <FollowersCard />}
+        {value?.value === "following" && <FollowingCard />}
+      </div>
+    </>
+  );
+};
+const ContentCard = () => {
+  return (
+    <div className="grid w-full grid-cols-2 max-md:px-2 max-lg:grid-cols-1 gap-x-10 gap-y-10 ">
+      <div className="w-full shadow-xl card bg-base-100 ">
+        <div className="card-body">
+          <div className="flex items-center justify-between gap-x-10">
+            <div className="flex flex-row items-center gap-5">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+    </div>
+  );
+};
+
+const FollowersCard = () => {
+  return (
+    <>
+      <div className="overflow-x-auto">
+        <table className="table">
+          <tbody className="w-full">
+            {/* row 1 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Levent KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+            {/* row 2 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Ogulcan KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+            {/* row 3 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Funda KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
+
+const FollowingCard = () => {
+  return (
+    <>
+      <div className="overflow-x-auto">
+        <table className="table">
+          <tbody className="w-full">
+            {/* row 1 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Levent KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+            {/* row 2 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Ogulcan KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+            {/* row 3 */}
+            <tr className="flex items-center justify-between">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{ width: "30px", height: "30px", objectFit: "contain" }}
+              />
+              <td>Funda KARAKAYA</td>
+              <td></td>
+              <button>Red</button>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+};
