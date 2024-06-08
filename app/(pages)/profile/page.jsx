@@ -5,6 +5,7 @@ import React from "react";
 import bg from "@/public/bg-cover.png";
 import Logo from "@/public/Logo.png";
 import Resim from "@/public/Resim.jpg";
+import style from "./profile.module.css";
 export default function page() {
   return (
     <>
@@ -44,10 +45,10 @@ export default function page() {
             </div>
           </div>
         </div>
-        <div>
-          {/* PopularUserCard component */}
-          {<PopularUserCard />}
-        </div>
+        {/* PopularUserCard component */}
+        <PopularUserCard />
+        {/* ContentCard component */}
+        <UserMessage />
       </div>
     </>
   );
@@ -114,16 +115,218 @@ const PopularUserCard = () => {
         {value?.value === "followers" && <FollowersCard />}
         {value?.value === "following" && <FollowingCard />}
       </div>
+      {/* ContentCard component */}
+      <div style={{ display: "none" }}>
+        {/* <Sidebar /> */}
+        <div className="">
+          <h1 className="text-3xl text-yellow-900">Profile</h1>
+        </div>
+      </div>
     </>
   );
 };
 const ContentCard = () => {
   return (
-    <div className="grid w-full grid-cols-2 max-md:px-2 max-lg:grid-cols-1 gap-x-10 gap-y-10 ">
-      <div className="w-full shadow-xl card bg-base-100 ">
+    <div className="flex flex-col gap-3">
+      <div className="mt-5 card ">
         <div className="card-body">
-          <div className="flex items-center justify-between gap-x-10">
-            <div className="flex flex-row items-center gap-5">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col ml-5">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+      <div className="mt-5 card ">
+        <div className="card-body">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+      <div className="mt-5 card ">
+        <div className="card-body">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+      <div className="mt-5 card ">
+        <div className="card-body">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+      <div className="mt-5 card ">
+        <div className="card-body">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
+              <Image
+                src={Logo}
+                alt="logo"
+                style={{
+                  width: "50px",
+                  height: "50px",
+                  objectFit: "contain",
+                }}
+              />
+              <div className="flex flex-col">
+                <span>Levent</span>
+                <span>Karakaya</span>
+              </div>
+            </div>
+            <span className="badge badge-secondary">Online</span>
+          </div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            velit quam quis voluptates a ex veritatis ipsam animi accusantium
+            quasi? Ipsa temporibus quidem voluptas possimus eaque laboriosam
+            inventore, facere corrupti.
+          </span>
+        </div>
+        <figure>
+          <Image
+            src={Resim}
+            alt="Shoes"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </figure>
+      </div>
+      <div className="mt-5 card ">
+        <div className="card-body">
+          <div className="flex items-center justify-between ">
+            <div className="flex flex-row items-center">
               <Image
                 src={Logo}
                 alt="logo"
@@ -250,6 +453,92 @@ const FollowingCard = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+    </>
+  );
+};
+
+const UserMessage = () => {
+  return (
+    <>
+      <div className={style.messageContainer}>
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <tbody>
+              {/* row 1 */}
+              <tr>
+                <td>
+                  <div className="avatar">
+                    <div className="w-12 h-12 mask mask-squircle">
+                      <img
+                        src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span className="leading-1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At,
+                    nam sed non magni eligendi aspernatur rerum ducimus quasi
+                    laudantium quam.
+                  </span>
+                </td>
+              </tr>
+              {/* row 2 */}
+              <tr>
+                <td>
+                  <div className="avatar">
+                    <div className="w-12 h-12 mask mask-squircle">
+                      <img
+                        src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At,
+                    nam sed non magni eligendi aspernatur rerum ducimus quasi
+                    laudantium quam.
+                  </span>
+                </td>
+              </tr>
+              {/* row 3 */}
+              <tr>
+                <td>
+                  <div className="avatar">
+                    <div className="w-12 h-12 mask mask-squircle">
+                      <img
+                        src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png"
+                        alt="Avatar Tailwind CSS Component"
+                      />
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At,
+                    nam sed non magni eligendi aspernatur rerum ducimus quasi
+                    laudantium quam.
+                  </span>
+                </td>
+              </tr>
+              {/* row 4 */}
+              <tr>
+                <td>
+                  <div className="flex ">
+                    <button className="px-5 py-2 text-white bg-blue-500 rounded p">
+                      mesajlar
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
