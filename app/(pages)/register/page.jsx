@@ -15,17 +15,16 @@ export default function page() {
     passwordConfirm: "",
     image: null,
   });
+  /* Upload state */
   const [upload, setUpload] = useState(false);
+  /* Get image URL */
+  const [avatar, setAvatar] = useState("");
   const router = useRouter();
   const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
-    console.log(user);
-  };
-  const handleRouter = () => {
-    router.push("/login");
   };
 
   const handleImageSubmit = async (e) => {
@@ -41,11 +40,17 @@ export default function page() {
         ...user,
         image: res.data.file.filename,
       });
+      /* Get image URL multer */
+      const responseImage = axios.get(
+        `http://localhost:5000/upload/${res.data.file.filename}`
+      );
+      const result = (await responseImage).request.responseURL;
+      console.log("🚀 ~ handleImageSubmit ~ result:", result);
+      setAvatar(result);
     } catch (error) {
       console.log("🚀 ~ handleImageSubmit ~ error:", error);
     }
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setUpload(true);
@@ -57,23 +62,18 @@ export default function page() {
         email: user.email,
         password: user.password,
         passwordConfirm: user.passwordConfirm,
-        image: user.image ? user.image : "",
+        image: avatar,
       });
       setUpload(false);
-      if (res.status === 201) {
-        SweetAlert2.fire({
-          icon: "success",
-          title: "Hesap oluşturuldu.",
-          text: "Hesabınızı aktive edin.",
-          showConfirmButton: true,
-        });
+      if (res.data.success === true) {
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         router.push("/login");
       }
     } catch (error) {
       console.log("🚀 ~ handleSubmit ~ error:", error);
     }
   };
-
   return (
     <>
       <div className="flex items-center justify-center md:h-[93vh] md:w-full">
@@ -81,7 +81,7 @@ export default function page() {
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             <label htmlFor="file-upload" className="custom-file-upload">
               <Image
-                src={"/logo.png"}
+                src={avatar || "/Logo.png"}
                 width={50}
                 height={50}
                 alt="logo"
@@ -103,7 +103,7 @@ export default function page() {
                 id="file-upload"
                 label="Image"
                 className="hidden"
-                accept=" .jpg, .png, .jpeg, .gif, .webp"
+                accept=" .jpg, .png, .jpeg, .gif, .webp "
                 onChange={handleImageSubmit}
               />
             </label>
@@ -170,9 +170,9 @@ export default function page() {
               </label>
             </div>
             <div className="flex items-center justify-center flex-1 mt-10 font-semibold gap-x-5">
-              <button className="px-10 btn ">Üye Ol</button>
+              <button className="px-10 btn">Üye Ol</button>
               <div
-                onClick={() => handleRouter()}
+                onClick={() => router.push("/login")}
                 className="flex items-center justify-center"
               >
                 <span className="text-sm hover:text-[#3b82f6] cursor-pointer rounded-full px-2">
